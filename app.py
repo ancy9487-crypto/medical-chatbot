@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from groq import Groq
 
@@ -9,11 +10,19 @@ st.markdown("""
 """)
 
 # 2. Secure Sidebar for API Key
-with st.sidebar:
-    st.header("Setup")
-    user_api_key = st.text_input("Enter your Groq API Key", type="password")
-    st.info("Get a free key at: [console.groq.com](https://console.groq.com/keys)")
+# Replace the sidebar code with this:
+import os
+import streamlit as st
+from groq import Groq
 
+# This looks for the secret you just saved in the dashboard
+api_key = st.secrets.get("GROQ_API_KEY")
+
+if api_key:
+    client = Groq(api_key=api_key)
+    # ... rest of your chat logic ...
+else:
+    st.error("API Key not found in Secrets!")
 # 3. Chat Logic
 if user_api_key:
     client = Groq(api_key=user_api_key)
