@@ -11,11 +11,6 @@ st.markdown("""
 
 # 2. Secure Sidebar for API Key
 # Replace the sidebar code with this:
-import os
-import streamlit as st
-from groq import Groq
-
-# This looks for the secret you just saved in the dashboard
 api_key = st.secrets.get("GROQ_API_KEY")
 
 if api_key:
